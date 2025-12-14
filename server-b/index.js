@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs");
-const app = express();
 
+const app = express();
 app.use(express.json());
 
 let adoptions = JSON.parse(fs.readFileSync("adoptions.json"));
