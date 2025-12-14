@@ -1,0 +1,32 @@
+<body>
+  <div id="animal"></div>
+
+  <form id="adoptForm">
+    <h3>Adoptoi minut</h3>
+    <input placeholder="Nimi" required>
+    <button>Adoptoi</button>
+  </form>
+
+  <script>
+    const id = new URLSearchParams(window.location.search).get("id");
+
+    fetch(`http://localhost:3000/animals/${id}`)
+      .then(res => res.json())
+      .then(a => {
+        document.getElementById("animal").innerHTML = `
+          <h2>${a.name}</h2>
+          <p>${a.description}</p>
+        `;
+      });
+
+    document.getElementById("adoptForm").onsubmit = e => {
+      e.preventDefault();
+
+      fetch(`http://localhost:3000/animals/${id}/adopt`, {
+        method: "POST"
+      }).then(() => {
+        window.location = "thanks.html";
+      });
+    };
+  </script>
+</body>
