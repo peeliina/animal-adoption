@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Misu",
+    "type": "Kissa",
+    "age": 2,
+    "breed": "Maatiaiskissa",
+    "description": "Rauhallinen ja kiltti kissa.",
+    "image": "",
+    "status": "available"
+  },
+  {
+    "id": 2,
+    "name": "Rex",
+    "type": "Koira",
+    "age": 4,
+    "breed": "Sekarotuinen",
+    "description": "Energiaa täynnä oleva koira.",
+    "image": "",
+    "status": "available"
+  }
+]
