@@ -11,7 +11,7 @@ fetch("http://localhost:3000/animals")
       card.innerHTML = `
         <h3>${animal.name}</h3>
         <p>${animal.type}, ${animal.age} vuotta</p>
-        <img src="${animal.image || 'https://via.placeholder.com/150'}">
+        <img src="${animal.image || 'https://via.placeholder.com/150'}" alt="Eläimen kuva">
         <br>
         <a href="animal.html?id=${animal.id}">Katso lisää</a>
       `;
