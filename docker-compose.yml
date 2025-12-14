@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  server-a:
+    build: ./server-a
+    ports:
+      - "3000:3000"
+    networks:
+      - animal-net
+
+  server-b:
+    build: ./server-b
+    ports:
+      - "4000:4000"
+    networks:
+      - animal-net
+
+  frontend:
+    image: nginx:alpine
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    networks:
+      - animal-net
+
+networks:
+  animal-net:
