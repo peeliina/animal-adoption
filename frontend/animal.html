@@ -2,26 +2,48 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <title>Eläimen tiedot</title>
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div id="animal"></div>
 
-  <form id="adoptForm">
-    <h3>Adoptoi minut</h3>
-    <input placeholder="Nimi" required>
-    <button>Adoptoi</button>
-  </form>
+<body>
+  <header>
+    <h1>Vaasan Eläinsuoja</h1>
+    <nav>
+      <a>Etusivu</a>
+      <a>Adoptoi</a>
+      <a>Yhteystiedot</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="animal"></div>
+
+    <form id="adoptForm">
+      <h3>Adoptoi minut</h3>
+      <input type="text" placeholder="Nimesi" required>
+      <button type="submit">Lähetä adoptiohakemus</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 Vaasan Eläinsuoja ry</p>
+  </footer>
 
   <script>
     const id = new URLSearchParams(window.location.search).get("id");
 
     fetch(`http://localhost:3000/animals/${id}`)
       .then(res => res.json())
-      .then(a => {
+      .then(animal => {
         document.getElementById("animal").innerHTML = `
-          <h2>${a.name}</h2>
-          <p>${a.description}</p>
+          <h2>${animal.name}</h2>
+          <img src="${animal.image || 'https://via.placeholder.com/300'}" style="max-width:300px; display:block; margin: 0 auto;">
+          <p><strong>Tyyppi:</strong> ${animal.type}</p>
+          <p><strong>Ikä:</strong> ${animal.age} vuotta</p>
+          <p><strong>Rotu:</strong> ${animal.breed}</p>
+          <p>${animal.description}</p>
         `;
       });
 
@@ -31,8 +53,9 @@
       fetch(`http://localhost:3000/animals/${id}/adopt`, {
         method: "POST"
       }).then(() => {
-        window.location = "thanks.html";
+        window.location.href = "thanks.html";
       });
     };
   </script>
 </body>
+</html>
