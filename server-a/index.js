@@ -1,10 +1,10 @@
 const express = require("express");
 const fs = require("fs");
-
 const app = express();
-app.use(express.json());
 
-// CORS – sallitaan frontendin kutsut
+app.use(express.json()); // Lukee JSON-datan
+
+// Sallitaan frontendin kutsut
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");

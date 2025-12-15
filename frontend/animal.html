@@ -6,7 +6,7 @@
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
   <link rel="stylesheet" href="style.css">
 </head>
-
+ 
 <body>
   <header>
     <h1>Vaasan Eläinsuoja</h1>
@@ -23,6 +23,7 @@
     <form id="adoptForm">
       <h3>Adoptoi minut</h3>
       <input type="text" placeholder="Nimesi" required>
+      <input type="text" placeholder="Numerosi" required>
       <button type="submit">Lähetä adoptiohakemus</button>
     </form>
   </main>
@@ -32,8 +33,10 @@
   </footer>
 
   <script>
+    // Etsitään eläimen ID
     const id = new URLSearchParams(window.location.search).get("id");
 
+    // Haetaan eläimen tiedot fetch:illä ja lisätään niiden tiedot sivulle
     fetch(`http://localhost:3000/animals/${id}`)
       .then(res => res.json())
       .then(animal => {
@@ -47,12 +50,14 @@
         `;
       });
 
+    // Käsitellään adoptiolomakkeen lähetys ja lähetetään se backendille
     document.getElementById("adoptForm").onsubmit = e => {
       e.preventDefault();
 
       fetch(`http://localhost:3000/animals/${id}/adopt`, {
         method: "POST"
       }).then(() => {
+        // Siirrytään kiitos-sivulle adoptiolomakkeen lähetyksen jälkeen
         window.location.href = "thanks.html";
       });
     };
