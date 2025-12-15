@@ -6,7 +6,7 @@
     "age": 2,
     "breed": "Maatiaiskissa",
     "description": "Rauhallinen ja kiltti kissa.",
-    "image": "images/dog.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/A-Cat.jpg",
     "status": "available"
   },
   {
@@ -16,7 +16,7 @@
     "age": 4,
     "breed": "Sekarotuinen",
     "description": "Energiaa täynnä oleva koira.",
-    "image": "images/cat.jpg",
+    "image": "https://live.staticflickr.com/1246/821161211_46d4439735_b.jpg",
     "status": "available"
   }
 ]
