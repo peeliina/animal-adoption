@@ -5,6 +5,8 @@ services:
     build: ./server-a
     ports:
       - "3000:3000"
+    volumes:
+      - ./server-a/animals.json:/app/animals.json
     networks:
       - animal-net
 
@@ -12,8 +14,11 @@ services:
     build: ./server-b
     ports:
       - "4000:4000"
+    volumes:
+      - ./server-b/adoptions.json:/app/adoptions.json
     networks:
       - animal-net
+
 
   frontend:
     image: nginx:alpine
